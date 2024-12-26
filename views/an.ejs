@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visits Per Date</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div style="width: 80%; margin: 20px auto">
+      <canvas id="visitChart"></canvas>
+    </div>
+
+    <script>
+      // Pass data from server
+      const dates = "<%= JSON.stringify(dates) %>";
+      const visitCounts = "<%= counts %>";
+
+      // Create chart
+      const ctx = document.getElementById("visitChart").getContext("2d");
+      new Chart(ctx, {
+        type: "bar", // Use 'line', 'bar', etc.
+        data: {
+          labels: dates,
+          datasets: [
+            {
+              label: "Number of Visits",
+              data: visitCounts,
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderColor: "rgba(54, 162, 235, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: "top" },
+            title: { display: true, text: "Visits Per Date" },
+          },
+          scales: {
+            x: { title: { display: true, text: "Date" } },
+            y: {
+              title: { display: true, text: "Number of Visits" },
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

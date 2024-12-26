@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.2",
+    "nanoid": "^5.0.9",
+    "nodemon": "^3.1.9",
+    "qrcodejs": "^1.0.0",
+    "shortid": "^2.2.16"
+  },
+  "scripts": {
+    "st": "nodemon app.js"
+  },
+  "name": "url-adv-shortener",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module"
+}

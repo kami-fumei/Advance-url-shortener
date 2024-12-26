@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/sh.css" />
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <body>
+    <%- include('hearder.ejs') %>
+    <div class="container">
+      <!-- <h1 class="h">Here is Your short URL </h1> -->
+      <div class="inner">
+        <h1 class="h">"Your link is now short and sweet!"</h1>
+        <div class="inner2">
+          <div class="cbox">
+            <input type="text" value="<%= sh %>" id="link-to-copy" readonly />
+            <button id="cb" onclick="copy()">COPY URL</button>
+          </div>
+
+          <div class="qbox">
+            <div id="qrcode"></div>
+            <p class="qp">
+              "Look at this masterpiece of squares and dots—it’s your QR code!"
+            </p>
+
+            <button id="d">DOWNLOAD QR</button>
+          </div>
+        </div>
+        <p class="og">
+          YOUR ORGINAL URL
+          <a href="<%- og  %>" target="_blank" rel="noopener noreferrer"
+            ><%- og %>
+          </a>
+          (opens in new tab)
+        </p>
+      </div>
+    </div>
+    <script>
+      function copy() {
+        let url = document.getElementById("link-to-copy");
+        let bt = document.getElementById("cb");
+        url.select();
+        try {
+          let successful = document.execCommand("copy");
+          bt.innerHTML = "COPIED !";
+          bt.padd;
+        } catch (err) {
+          alert("Unable to copy");
+          console.log(err);
+        }
+      }
+      let qr = new QRCode(
+        document.getElementById("qrcode"),
+        document.querySelector("#link-to-copy").value
+      );
+      document.getElementById("d").addEventListener("click", function () {
+        const a = document.createElement("a");
+        a.href = qr._oDrawing._elImage.attributes.src.value;
+        a.download = `shortQrCode - ${
+          document.querySelector("#link-to-copy").value
+        }.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+    </script>
+  </body>
+</html>

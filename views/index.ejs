@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="icon" type="imge/x-ico" href="img/favicon.ico" />
+  </head>
+
+  <body>
+    <%- include('hearder.ejs') %>
+    <form action="/shortUrl.nodejs" method="post">
+      <div class="search-container">
+        <h2>
+          "Welcome! Transform lengthy URLs into concise, shareable links
+          effortlessly."
+        </h2>
+        <p>Enter your url with or without https *</p>
+        <input
+          type="text"
+          class="search-box"
+          name="url"
+          required
+          placeholder="ex:https://google.com"
+        />
+
+        <p>Enter your Custom url which you want to set (OPTIONAL)</p>
+        <input
+          type="text"
+          class="custom"
+          name="custom"
+          placeholder="ex:Welcome-to-my-websitee"
+        />
+        <% if (ex==="true") { %>
+        <p id="ex">This custom already exists kindly try other !!!!</p>
+        <% } %>
+        <input type="submit" class="search-button" value="Generate" />
+      </div>
+    </form>
+  </body>
+</html>

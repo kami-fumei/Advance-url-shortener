@@ -1,0 +1,48 @@
+
+header{
+    background-color: black;
+font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0 20px 0 ;
+}
+.logo{
+    color:white;
+    text-shadow: rgb(167, 163, 163) 2px 2px  2px ;
+    font-weight: bold;
+    height:20px ;
+    padding-left:40px ;
+    font-family:monospace;
+    transition: 0.3s ;
+      
+}
+.logo:hover{ 
+ transform: scale(0.8);
+}
+/* todo
+.logo:hover::before{
+    content: attr(data-hover);
+    font-size: 20px;
+} */
+
+.nav ul{
+display: flex;
+list-style-type:none
+}
+.nav ul li a{
+display: block;
+font-family:monospace;
+font-size: 19px;
+color: rgb(255, 255, 255);
+padding: 10px 25px;
+border-radius: 0 50px;
+transition: 0.2s;
+margin: 0 5px;
+text-decoration: none;
+}
+
+.nav ul li a:hover{
+    color: black;
+    background-color:rgb(255, 255, 255);
+}
